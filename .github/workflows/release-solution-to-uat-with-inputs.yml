@@ -112,7 +112,7 @@ jobs:
       with:
         name: managedSolutions
         path: ${{ inputs.solution_release_folder}}
-    - name: Import solution to prod env
+    - name: Import solution to uat env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
         environment-url: ${{inputs.UAT_ENVIRONMENT_URL}}
