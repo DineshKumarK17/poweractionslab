@@ -14,8 +14,8 @@ jobs:
       #You can specify the solution name here
       solution_name: ALMLab
       #Update your values here
-      BUILD_ENVIRONMENT_URL: https://org4b5e39a7.crm8.dynamics.com/
-      UAT_ENVIRONMENT_URL: https://org54b1334b.crm8.dynamics.com/
+      BUILD_ENVIRONMENT_URL: 'https://org4b5e39a7.crm8.dynamics.com/'
+      UAT_ENVIRONMENT_URL: 'https://org54b1334b.crm8.dynamics.com/'
       CLIENT_ID: 99a6de1d-b409-482b-b104-7ad352a341a3
       TENANT_ID: fe3330e7-93a6-4cef-b28c-ca059efccd9d      
     secrets:
