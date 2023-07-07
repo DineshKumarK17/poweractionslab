@@ -1,0 +1,582 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "sys_sharedcommondataserviceforapps_26b20"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "sys_sharedapprovals_dca19"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "sys_sharedoffice365_c3f2b"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_teams": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "sys_sharedteams_95bee"
+        },
+        "api": {
+          "name": "shared_teams"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "b0660664-525e-4d3f-b26e-356966b5d7f8"
+          },
+          "type": "Request",
+          "kind": "PowerApp",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "GetarowbyID_RowID": {
+                  "type": "string",
+                  "description": "Enter the row's globally unique identifier (GUID)",
+                  "x-ms-powerflows-param-ispartial": false
+                }
+              },
+              "required": [
+                "GetarowbyID_RowID"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_a_row_by_ID-_guid_vehicle_booking": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "35443658-f384-4c18-88c2-10e176855d5c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sys_vehiclebookingdetails",
+              "recordId": "@triggerBody()['GetarowbyID_RowID']"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Condition_2": {
+              "actions": {
+                "Get_a_row_by_ID_2-get_nodal_officer_name": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "be68a017-0f41-46f4-9299-d2f9dfbc5eba"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "systemusers",
+                      "recordId": "@outputs('Get_a_row_by_ID-_guid_vehicle_booking')?['body/_sys_nodalofficername_value']"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "Start_and_wait_for_an_approval-_First_Level": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_2-get_nodal_officer_name": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "eaf53636-80c2-446b-b837-fb46af4cc39f"
+                  },
+                  "type": "OpenApiConnectionWebhook",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_approvals",
+                      "operationId": "StartAndWaitForAnApproval",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+                    },
+                    "parameters": {
+                      "approvalType": "BasicAwaitAll",
+                      "WebhookApprovalCreationInput/title": "Approve/Reject for Vehicle- Controlling Officer",
+                      "WebhookApprovalCreationInput/assignedTo": "DineshK@DVC027.onmicrosoft.com;",
+                      "WebhookApprovalCreationInput/enableNotifications": true,
+                      "WebhookApprovalCreationInput/enableReassignment": true
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "Condition_3": {
+                  "actions": {
+                    "Update_a_row": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "f502a62b-8451-4369-b33a-5e0bfe450ff2"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "sys_vehiclebookingdetails",
+                          "recordId": "@outputs('Get_a_row_by_ID-_guid_vehicle_booking')?['body/sys_vehiclebookingdetailid']",
+                          "item/sys_bookingstatus": 926050000
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    },
+                    "Get_a_row_by_ID": {
+                      "runAfter": {
+                        "Send_an_email_(V2)": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "6c48ec0b-3f4f-43d3-bb85-4bd541b0fc3f"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "sys_vehiclebookingdetails",
+                          "recordId": "@outputs('Update_a_row')?['body/sys_vehiclebookingdetailid']"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    },
+                    "Send_an_email_(V2)": {
+                      "runAfter": {
+                        "Update_a_row": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "396556e8-1ca8-48fb-ab9c-c9a8461bdb2b"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_office365",
+                          "operationId": "SendEmailV2",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                        },
+                        "parameters": {
+                          "emailMessage/To": "DineshK@DVC027.onmicrosoft.com",
+                          "emailMessage/Subject": "Approved By Controlling Officer Mail",
+                          "emailMessage/Body": "<p>Hi,<br>\n<br>\nApproved first level controlling officer Ack Mail,<br>\n<br>\n<br>\n<br>\n</p>",
+                          "emailMessage/Importance": "Normal"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    },
+                    "Condition_4": {
+                      "actions": {
+                        "Start_and_wait_for_an_approval_-Second_Level_nodal_officer": {
+                          "runAfter": {
+                            "Get_a_row_by_ID_3": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "9bf5700e-6095-4e3e-a035-9c64c4907107"
+                          },
+                          "type": "OpenApiConnectionWebhook",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_approvals",
+                              "operationId": "StartAndWaitForAnApproval",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+                            },
+                            "parameters": {
+                              "approvalType": "BasicAwaitAll",
+                              "WebhookApprovalCreationInput/title": "Approve Reject- Nodal Officer",
+                              "WebhookApprovalCreationInput/assignedTo": "@{outputs('Get_a_row_by_ID_3')?['body/internalemailaddress']};",
+                              "WebhookApprovalCreationInput/enableNotifications": true,
+                              "WebhookApprovalCreationInput/enableReassignment": true
+                            },
+                            "authentication": {
+                              "type": "Raw",
+                              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                            }
+                          }
+                        },
+                        "Get_a_row_by_ID_3": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "316133b8-1982-48af-949f-a3087e86382b"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "GetItem",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "systemusers",
+                              "recordId": "@outputs('Get_a_row_by_ID')?['body/_sys_nodalofficername_value']"
+                            },
+                            "authentication": {
+                              "type": "Raw",
+                              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                            }
+                          }
+                        },
+                        "Condition_5": {
+                          "actions": {
+                            "Update_a_row_2": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "7c69ffa8-7480-4c5c-93fb-492e3ee672fd"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_commondataserviceforapps",
+                                  "operationId": "UpdateRecord",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                },
+                                "parameters": {
+                                  "entityName": "sys_vehiclebookingdetails",
+                                  "recordId": "@outputs('Get_a_row_by_ID')?['body/sys_vehiclebookingdetailid']",
+                                  "item/sys_bookingstatus": 926050006
+                                },
+                                "authentication": {
+                                  "type": "Raw",
+                                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                                }
+                              }
+                            },
+                            "Send_an_email_(V2)_2": {
+                              "runAfter": {
+                                "Update_a_row_2": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "37fec6a3-063c-440c-b5d1-e36486ca308e"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_office365",
+                                  "operationId": "SendEmailV2",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                                },
+                                "parameters": {
+                                  "emailMessage/To": "DineshK@DVC027.onmicrosoft.com",
+                                  "emailMessage/Subject": "Approved By nodal Officer",
+                                  "emailMessage/Body": "<p>nodal</p>",
+                                  "emailMessage/Importance": "Normal"
+                                },
+                                "authentication": {
+                                  "type": "Raw",
+                                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                                }
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "Start_and_wait_for_an_approval_-Second_Level_nodal_officer": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "equals": [
+                              "",
+                              "Approve"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "0c384a55-8f5b-4a1b-9042-ec036d25be7e"
+                          },
+                          "type": "If"
+                        }
+                      },
+                      "runAfter": {
+                        "Get_a_row_by_ID": [
+                          "Succeeded"
+                        ]
+                      },
+                      "expression": {
+                        "equals": [
+                          "@outputs('Update_a_row')?['body/sys_bookingstatus']",
+                          926050000
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "0659d09b-0482-41e6-97ae-a0cd3d39da2e"
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {
+                    "Start_and_wait_for_an_approval-_First_Level": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": {
+                    "equals": [
+                      "",
+                      "Approve"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "66252e34-26a0-4f00-82e2-eda16f65429f"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Send_an_email_(V2)_3": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "d067e635-a30f-4bdb-b226-00a5764efd4d"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_office365",
+                        "operationId": "SendEmailV2",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                      },
+                      "parameters": {
+                        "emailMessage/To": "DineshK@DVC027.onmicrosoft.com",
+                        "emailMessage/Subject": "Already Approved By Controlling Officer",
+                        "emailMessage/Body": "<p>Hi ,<br>\n<br>\nVehicle Already approved by Controlling Officer.<br>\n<br>\nThanks,<br>\n<br>\nRegards</p>",
+                        "emailMessage/Importance": "Normal"
+                      },
+                      "authentication": {
+                        "type": "Raw",
+                        "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                      }
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@outputs('Get_a_row_by_ID-_guid_vehicle_booking')?['body/sys_bookingstatus']",
+                  926050002
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "c266b187-50f6-41e2-8a1b-ee3f9ad520d0"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_a_row_by_ID-_guid_vehicle_booking": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Condition_6": {
+                "actions": {
+                  "Get_a_row_by_ID_2": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "6c1fe6ec-55a8-4302-bd15-74c6b5c47555"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "systemusers",
+                        "recordId": "@outputs('Get_a_row_by_ID-_guid_vehicle_booking')?['body/_sys_nodalofficername_value']"
+                      },
+                      "authentication": {
+                        "type": "Raw",
+                        "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                      }
+                    }
+                  },
+                  "CardNodal": {
+                    "runAfter": {
+                      "Get_a_row_by_ID_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1cdcfab6-c51b-41d9-8aff-6a7a3ddc9011"
+                    },
+                    "type": "OpenApiConnectionWebhook",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_teams",
+                        "operationId": "PostCardAndWaitForResponse",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams"
+                      },
+                      "parameters": {
+                        "poster": "Flow bot",
+                        "location": "Chat with Flow bot",
+                        "body/body/messageBody": "{\n    \"type\": \"AdaptiveCard\",\n    \"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n    \"version\": \"1.3\",\n    \"body\": [\n        {\n            \"type\": \"Image\",\n            \"url\": \"https://img.freepik.com/premium-vector/taxi-out-from-phone-booking-online-taxi-service-graphic-design-vector-illustration_620585-19.jpg?w=2000\",\n            \"size\": \"Large\"\n        },\n        {\n            \"type\": \"TextBlock\",\n            \"text\": \"Vehicle Bookings Approval\",\n            \"wrap\": true,\n            \"separator\": true,\n            \"style\": \"heading\",\n            \"size\": \"Medium\",\n            \"color\": \"Accent\"\n        },\n        {\n            \"type\": \"Input.Text\",\n            \"placeholder\": \"\",\n            \"label\": \"Enter the Driver Name\",\n            \"isRequired\": true,\n            \"id\": \"drivername\",\n            \"errorMessage\": \"Please enter the Driver Name\"\n        },\n        {\n            \"type\": \"Input.Text\",\n            \"placeholder\": \"\",\n            \"label\": \"Enter the Driver Contact Number\",\n            \"maxLength\": 10,\n            \"isRequired\": true,\n            \"id\": \"drivernumber\",\n            \"errorMessage\": \"Please enter the driver number\"\n        },\n        {\n            \"type\": \"Input.Text\",\n            \"placeholder\": \"\",\n            \"label\": \"Enter Vehicle Name\",\n            \"isRequired\": true,\n            \"id\": \"vehiclenumber\",\n            \"errorMessage\": \"Please enter the vehilce number\"\n        },\n        {\n            \"type\": \"Input.Text\",\n            \"placeholder\": \"\",\n            \"id\": \"vehiclename\",\n            \"label\": \"Enter the Vehicle Number\",\n            \"isRequired\": true,\n            \"errorMessage\": \"Please enter the vehicle name\"\n        },\n        {\n            \"type\": \"Input.ChoiceSet\",\n            \"choices\": [\n                {\n                    \"title\": \"Approved by Nodal Officer\",\n                    \"value\": \"926050006\"\n                },\n                {\n                    \"title\": \"Rejected by Nodal Officer\",\n                    \"value\": \"926050007\"\n                }\n            ],\n            \"placeholder\": \"\",\n            \"label\": \"Select Status\",\n            \"id\": \"bookingstatus_nodalofficer\",\n            \"isRequired\": true,\n            \"errorMessage\": \"Please Select the Status\"\n        },\n        {\n            \"type\": \"ActionSet\",\n            \"actions\": [\n                {\n                    \"type\": \"Action.Submit\",\n                    \"title\": \"Submit\"\n                }\n            ]\n        }\n    ]\n}",
+                        "body/body/updateMessage": "Thanks for your response!",
+                        "body/body/recipient/to": "@{outputs('Get_a_row_by_ID_2')?['body/internalemailaddress']};"
+                      },
+                      "authentication": {
+                        "type": "Raw",
+                        "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                      }
+                    }
+                  },
+                  "Get_a_row_by_ID_4": {
+                    "runAfter": {
+                      "CardNodal": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "e823a269-66aa-402e-ac1f-f6a7a21386ac"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "sys_vehiclebookingdetails",
+                        "recordId": "@outputs('Get_a_row_by_ID-_guid_vehicle_booking')?['body/sys_vehiclebookingdetailid']"
+                      },
+                      "authentication": {
+                        "type": "Raw",
+                        "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                      }
+                    }
+                  },
+                  "Update_a_row_3": {
+                    "runAfter": {
+                      "Get_a_row_by_ID_4": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "abe879e9-d379-4952-b3da-483726af8083"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "sys_vehiclebookingdetails",
+                        "recordId": "@outputs('Get_a_row_by_ID_4')?['body/sys_vehiclebookingdetailid']",
+                        "item/sys_bookingstatus": "@body('CardNodal')?['data']?['bookingstatus_nodalofficer']",
+                        "item/sys_vehicledrivercontact": "@body('CardNodal')?['data']?['drivernumber']",
+                        "item/sys_vehicledrivername": "@body('CardNodal')?['data']?['drivername']",
+                        "item/sys_vehiclename": "@body('CardNodal')?['data']?['vehiclename']",
+                        "item/sys_vehiclenumber": "@body('CardNodal')?['data']?['vehiclenumber']"
+                      },
+                      "authentication": {
+                        "type": "Raw",
+                        "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                      }
+                    }
+                  }
+                },
+                "runAfter": {},
+                "expression": {
+                  "equals": [
+                    "@outputs('Get_a_row_by_ID-_guid_vehicle_booking')?['body/sys_bookingstatus']",
+                    926050000
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "018fc2d5-8f7e-4b9b-9f47-6c291602a660"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_a_row_by_ID-_guid_vehicle_booking')?['body/sys_m5aboveflag']",
+              "N"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e39b3b0c-108e-4670-9eb1-f8a2a9c2c19f"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

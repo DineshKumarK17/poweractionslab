@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8c8f0427-4724-46de-9638-678173d6bd0a}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sys_name" select="1" icon="1" preview="1">
+        <row name="result" id="sys_vehiclebookingdetailid">
+          <cell name="createdon" width="125" />
+          <cell name="sys_bookingdate" width="192" />
+          <cell name="sys_bookingstatus" width="100" />
+          <cell name="sys_employeename" width="100" />
+          <cell name="sys_m5aboveflag" width="100" />
+          <cell name="sys_nodalofficername" width="100" />
+          <cell name="sys_requestid" width="100" />
+          <cell name="sys_vehicledrivername" width="100" />
+          <cell name="sys_vehiclename" width="100" />
+          <cell name="sys_vehiclenumber" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sys_vehiclebookingdetail">
+          <attribute name="sys_vehiclebookingdetailid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sys_bookingdate" />
+          <attribute name="sys_bookingstatus" />
+          <attribute name="sys_employeename" />
+          <attribute name="sys_m5aboveflag" />
+          <attribute name="sys_nodalofficername" />
+          <attribute name="sys_requestid" />
+          <attribute name="sys_vehicledrivername" />
+          <attribute name="sys_vehiclename" />
+          <attribute name="sys_vehiclenumber" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Vehicle Booking Details" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

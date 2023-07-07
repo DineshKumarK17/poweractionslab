@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e2b20ffb-374e-49c5-94f0-6bf5618a0dbd}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sys_locationname" select="1" icon="1" preview="1">
+        <row name="result" id="sys_locationmasterid">
+          <cell name="sys_locationname" width="215" />
+          <cell name="sys_nodalofficername" width="239" />
+          <cell name="createdon" width="271" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sys_locationmaster">
+          <attribute name="sys_locationmasterid" />
+          <attribute name="sys_locationname" />
+          <attribute name="createdon" />
+          <order attribute="sys_locationname" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="sys_nodalofficername" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Location Masters" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

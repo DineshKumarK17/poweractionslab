@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_sys_vehiclebookingdetail" />
+  <EntityRelationship Name="lk_sys_locationmaster_createdby" />
+  <EntityRelationship Name="lk_sys_locationmaster_modifiedby" />
+  <EntityRelationship Name="lk_sys_roleconfiguration_createdby" />
+  <EntityRelationship Name="lk_sys_roleconfiguration_modifiedby" />
+  <EntityRelationship Name="lk_sys_vehiclebookingdetail_createdby" />
+  <EntityRelationship Name="lk_sys_vehiclebookingdetail_modifiedby" />
+  <EntityRelationship Name="organization_sys_locationmaster" />
+  <EntityRelationship Name="organization_sys_roleconfiguration" />
+  <EntityRelationship Name="owner_sys_vehiclebookingdetail" />
+  <EntityRelationship Name="sys_sys_locationmaster_NodalOfficerName_syste" />
+  <EntityRelationship Name="sys_sys_vehiclebookingdetail_NodalOfficerName" />
+  <EntityRelationship Name="sys_systemuser_RoleName_sys_roleconfiguration" />
+  <EntityRelationship Name="team_sys_vehiclebookingdetail" />
+  <EntityRelationship Name="user_sys_vehiclebookingdetail" />
+</EntityRelationships>
