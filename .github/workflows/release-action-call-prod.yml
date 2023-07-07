@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/release-solution-to-prod-with-inputs.yml
     with:
       #You can specify the solution name here
-      solution_name: ALMLab
+      solution_name: VehicleBooking
       #Update your values here
       BUILD_ENVIRONMENT_URL: 'https://org4b5e39a7.crm8.dynamics.com/'
       PRODUCTION_ENVIRONMENT_URL: 'https://orgfc8d916e.crm8.dynamics.com/'
