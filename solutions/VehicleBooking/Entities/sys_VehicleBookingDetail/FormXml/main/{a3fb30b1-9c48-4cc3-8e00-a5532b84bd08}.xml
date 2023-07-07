@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{a3fb30b1-9c48-4cc3-8e00-a5532b84bd08}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{fc62408f-e33d-4b9a-ac66-27111235937d}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{6a4df347-4cbd-4f1b-89c7-402dcf4c69bc}" columns="1">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e45d029f-aa7c-416e-8627-a51bcacd2806}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Request ID" languagecode="1033" />
+                        </labels>
+                        <control id="sys_requestid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_requestid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{65855c96-6214-443d-a6ba-cffd420cbf7c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Booking Date" languagecode="1033" />
+                        </labels>
+                        <control id="sys_bookingdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="sys_bookingdate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{031cb2ed-3129-4e17-b250-0d2eae46908b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Employee Name" languagecode="1033" />
+                        </labels>
+                        <control id="sys_employeename" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_employeename" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fff5ef8c-006e-4599-8997-2d0057f805e0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Employee ID" languagecode="1033" />
+                        </labels>
+                        <control id="sys_employeeid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_employeeid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e22c2e04-559c-4f75-a45a-e6cb589430f6}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Designation" languagecode="1033" />
+                        </labels>
+                        <control id="sys_designation" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_designation" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{036b5ae4-19d0-43b1-95ae-55d3f5f8094c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Email ID" languagecode="1033" />
+                        </labels>
+                        <control id="sys_emailid" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_emailid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c239db8e-032c-49b1-9355-f24bb546e002}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Employee Location" languagecode="1033" />
+                        </labels>
+                        <control id="sys_employeelocation" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_employeelocation" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3d185a52-4d84-4f25-899b-d686a0d43748}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="M5 Above Flag" languagecode="1033" />
+                        </labels>
+                        <control id="sys_m5aboveflag" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_m5aboveflag" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{828697fe-0353-430e-bb14-bf9f258d6bf1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Contact Number" languagecode="1033" />
+                        </labels>
+                        <control id="sys_contactnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_contactnumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{968ebacb-22c5-436b-a0d0-ad915b39a7f7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Section" languagecode="1033" />
+                        </labels>
+                        <control id="sys_section" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_section" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5ff2ac71-3253-4459-8ed0-cbca0db3174d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reporting Name(Controlling Officer)" languagecode="1033" />
+                        </labels>
+                        <control id="sys_reportingnamecontrollingofficer" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_reportingnamecontrollingofficer" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fb15fb5e-70df-4632-bcf9-e9010215bd8f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reporting Id(Controlling Officer)" languagecode="1033" />
+                        </labels>
+                        <control id="sys_reportingidcontrollingofficer" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_reportingidcontrollingofficer" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4f87d0e3-91e1-4c27-842a-24ee90aae689}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reporting Mail Id(Controlling Officer)" languagecode="1033" />
+                        </labels>
+                        <control id="sys_reportingmailidcontrollingofficer" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_reportingmailidcontrollingofficer" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5462851b-88e8-4c7b-a144-f17433678588}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Purpose of Visit" languagecode="1033" />
+                        </labels>
+                        <control id="sys_purposeofvisit" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="sys_purposeofvisit" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9b41a745-1b4a-45b1-860d-a5242824f3e3}" showlabel="true" visible="false">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="sys_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="sys_name" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_894" id="b7919644-ad99-4f28-8822-6dce2b999f63" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Vehicle Booking Request" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c61eb21a-0b28-4e06-aa3b-ccb3b7c82077}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Nodal Officer Name" languagecode="1033" />
+                        </labels>
+                        <control id="sys_nodalofficername" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="sys_nodalofficername" disabled="false" />
+                      </cell>
+                      <cell id="{5190685d-8c48-40e3-ae81-5deb0bbcceb1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Vehicle Name" languagecode="1033" />
+                        </labels>
+                        <control id="sys_vehiclename" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_vehiclename" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ca578b3a-fc35-4836-90d9-fb52a9c193ef}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Date Time Onward Journey" languagecode="1033" />
+                        </labels>
+                        <control id="sys_datetimeonwardjourney" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="sys_datetimeonwardjourney" disabled="false" />
+                      </cell>
+                      <cell id="{77e30a1e-d8cb-4ff1-93f2-56143d622fc1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Vehicle Number" languagecode="1033" />
+                        </labels>
+                        <control id="sys_vehiclenumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_vehiclenumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{04e57f8a-ade1-43ce-bdbd-e724f22d65b9}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Distance of Onward Journey" languagecode="1033" />
+                        </labels>
+                        <control id="sys_distanceofonwardjourney" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_distanceofonwardjourney" disabled="false" />
+                      </cell>
+                      <cell id="{b6419d00-56e9-43a0-aecf-4032a0946b1a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Vehicle Driver Contact" languagecode="1033" />
+                        </labels>
+                        <control id="sys_vehicledrivercontact" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_vehicledrivercontact" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{21fe50c3-2f0c-4b45-9f5a-40199ad76f2b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Place to Visit Onward Journey" languagecode="1033" />
+                        </labels>
+                        <control id="sys_placetovisitonwardjourney" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_placetovisitonwardjourney" disabled="false" />
+                      </cell>
+                      <cell id="{6c3d4eb3-b7a1-4dc8-9c1a-ce1a09d9d103}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Vehicle Driver Name" languagecode="1033" />
+                        </labels>
+                        <control id="sys_vehicledrivername" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_vehicledrivername" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f0510256-f5d8-4283-8169-bbd4c195937f}" userspacer="true" showlabel="false" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{d1fe71e1-b665-4d4e-87c6-601b4d5b3bbd}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{570753de-c3c1-41b5-98f5-4ef09ba6d856}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Date Time Return Journey" languagecode="1033" />
+                        </labels>
+                        <control id="sys_datetimereturnjourney" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="sys_datetimereturnjourney" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{22fa776a-9ded-4981-8a71-a7a3c4c878c1}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{96bd23be-314d-49a5-9761-0015b1d8bb75}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Distance of Return Journey" languagecode="1033" />
+                        </labels>
+                        <control id="sys_distanceofreturnjourney" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_distanceofreturnjourney" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{37a5df6c-6b62-45a6-b57e-f439e6535ece}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7d9f2adc-edba-4d1b-affe-4a3b87fc1109}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Place to Visit Return Journey" languagecode="1033" />
+                        </labels>
+                        <control id="sys_placetovisitreturnjourney" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sys_placetovisitreturnjourney" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{67868171-335a-4dae-925b-e4e7b8568a66}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{3a45c5d4-46f3-482f-bff8-3719b7608ca2}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{af380f3d-3c8b-45ef-97c6-db072e41636b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0eca1209-ca27-447e-8a24-dd6dbe58d9ca}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{dd19f3f6-0c02-48ff-abcf-9f81aba10cb8}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{fa404b2d-588d-459c-af36-f7a39ab4187c}" colspan="1" rowspan="1">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+            <cell id="{07f81514-dcab-48d6-9332-2a3558175bdf}" locklevel="0" colspan="1" rowspan="1">
+              <labels>
+                <label description="Booking Status" languagecode="1033" />
+              </labels>
+              <control id="header_sys_bookingstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="sys_bookingstatus" disabled="false" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{8672b7a3-7337-4e43-ae79-32cf1ff3dab9}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{75b94a0e-7309-43d8-8a20-6f11a8c9e979}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d47df9d2-947d-46ce-b003-4f089db62fcf}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{6734125d-7c7e-4113-bf95-5dd64f78033e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

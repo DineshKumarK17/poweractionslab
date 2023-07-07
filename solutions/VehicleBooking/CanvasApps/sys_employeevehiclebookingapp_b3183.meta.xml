@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>sys_employeevehiclebookingapp_b3183</Name>
+  <AppVersion>2023-06-20T11:05:37Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.22111.28.0</CreatedByClientVersion>
+  <MinClientVersion>3.22111.28.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"640","primaryDeviceHeight":"1136","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Phone","publisherVersion":"3.22111.28","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20221202T140734Z-3.22111.28.0"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+  <DisplayName>Employee Vehicle Booking App</DisplayName>
+  <Description></Description>
+  <CommitMessage></CommitMessage>
+  <Publisher></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{"73676ba4-f7a4-4e22-9ae7-ca8cf69da276":{"id":"/providers/microsoft.powerapps/apis/shared_office365users","displayName":"Office 365 Users","iconUri":"https://connectoricons-prod.azureedge.net/u/laborbol/partial-builds/390724148/1.0.1641.3327/office365users/icon.png","dataSources":["Office365Users"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["UserPhoto_V2"]},"4400d82d-5220-4b12-9383-c34fa4ecf92e":{"id":"/providers/microsoft.powerapps/apis/shared_logicflows","displayName":"Logic flows","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1636/1.0.1636.3297/logicflows/icon.png","dataSources":["GetEmployeeDetails"],"dependencies":[],"dependents":[],"parameterHints":{"workflowName":{"value":"664d947f-5bf3-427e-97bc-ff47f9f019ac"},"workflowEntityId":{"value":"968a2d77-6471-ed11-81ab-0022486e301c"}},"parameterHintsV2":{"workflowName":{"value":"664d947f-5bf3-427e-97bc-ff47f9f019ac"},"workflowEntityId":{"value":"968a2d77-6471-ed11-81ab-0022486e301c"}},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Run"]}}</ConnectionReferences>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Vehicle Booking Details":{"entitySetName":"sys_vehiclebookingdetails","logicalName":"sys_vehiclebookingdetail"},"Users":{"entitySetName":"systemusers","logicalName":"systemuser"},"Location Masters":{"entitySetName":"sys_locationmasters","logicalName":"sys_locationmaster"},"Role Configurations":{"entitySetName":"sys_roleconfigurations","logicalName":"sys_roleconfiguration"}}}}</DatabaseReferences>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>0</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"sys_vehiclebookingdetail"},{"componenttype":1,"logicalname":"systemuser"},{"componenttype":1,"logicalname":"sys_locationmaster"},{"componenttype":1,"logicalname":"sys_roleconfiguration"}]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/sys_employeevehiclebookingapp_b3183_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/sys_employeevehiclebookingapp_b3183_DocumentUri.msapp</DocumentUri>
+</CanvasApp>

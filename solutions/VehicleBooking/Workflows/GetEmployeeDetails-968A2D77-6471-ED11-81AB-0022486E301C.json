@@ -1,0 +1,151 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "df6b889a-db29-450a-9fa8-8005353a49df"
+          },
+          "type": "Request",
+          "kind": "PowerApp",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "HTTP_Body": {
+                  "type": "any",
+                  "description": "Enter request content. This parameter is used as part of \"F21CE714-35F6-4488-A4E8-707BB750E3B8\"",
+                  "x-ms-powerflows-param-ispartial": true
+                }
+              },
+              "required": [
+                "HTTP_Body"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "HTTP": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c6940cff-f099-47fe-a330-7010cd428306"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "POST",
+            "uri": "https://application.dvc.gov.in:8443/ClientApp/rest/json/powerapp/empdtl1",
+            "body": {
+              "email_id": "@{triggerBody()['HTTP_Body']}",
+              "auth_key": "MveM#09JsunPe"
+            }
+          }
+        },
+        "Response": {
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "73181810-b6f5-4c97-9e88-d7332cf5d30b"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": "@body('HTTP')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "emp_dtl": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "empNo": {
+                        "type": "string"
+                      },
+                      "empName": {
+                        "type": "string"
+                      },
+                      "birthDate": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string"
+                      },
+                      "designation": {
+                        "type": "string"
+                      },
+                      "reportingName": {
+                        "type": "string"
+                      },
+                      "reportingId": {
+                        "type": "string"
+                      },
+                      "reportingEmailId": {
+                        "type": "string"
+                      },
+                      "m5AboveFlag": {
+                        "type": "string"
+                      },
+                      "emailId": {
+                        "type": "string"
+                      },
+                      "mobNo": {
+                        "type": "string"
+                      },
+                      "section": {
+                        "type": "string"
+                      },
+                      "location": {
+                        "type": "string"
+                      },
+                      "group": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "empNo",
+                      "empName",
+                      "birthDate",
+                      "gender",
+                      "designation",
+                      "reportingName",
+                      "reportingId",
+                      "reportingEmailId",
+                      "m5AboveFlag",
+                      "emailId",
+                      "mobNo",
+                      "section",
+                      "location",
+                      "group"
+                    ]
+                  }
+                },
+                "errmMsg": {
+                  "type": "string"
+                },
+                "isSuccess": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

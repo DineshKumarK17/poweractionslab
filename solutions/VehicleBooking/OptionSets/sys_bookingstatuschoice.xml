@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="sys_bookingstatuschoice" localizedName="Booking Status Choice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <ExternalTypeName></ExternalTypeName>
+  <displaynames>
+    <displayname description="Booking Status Choice" languagecode="1033" />
+  </displaynames>
+  <options>
+    <option value="926050000" ExternalValue="">
+      <labels>
+        <label description="Approved by Controlling Officer" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="926050001" ExternalValue="">
+      <labels>
+        <label description="Rejected by Controlling Officer" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="926050002" ExternalValue="">
+      <labels>
+        <label description="Pending at Controlling Officer" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="926050003" ExternalValue="">
+      <labels>
+        <label description="Cancelled by Employee" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="926050004" ExternalValue="">
+      <labels>
+        <label description="Cancelled by Controlling Officer" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="926050006">
+      <labels>
+        <label description="Approved by Nodal Officer" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="926050007">
+      <labels>
+        <label description="Rejected by Nodal Officer" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+  </options>
+</optionset>
